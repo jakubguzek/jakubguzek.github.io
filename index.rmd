@@ -1,7 +1,0 @@
----
-title: Jakub J. Guzek
----
-
-# Hello World
-
-Lorem ipsum dolor sit amet
