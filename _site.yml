@@ -17,4 +17,4 @@ navbar:
                   href: https://github.com/jakubguzek
 output:
         html_document:
-                theme: journal
+                theme: flatly
