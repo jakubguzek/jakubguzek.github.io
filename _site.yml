@@ -1,0 +1,18 @@
+name: "jakubguzek.eu"
+output_dir: "."
+navbar:
+        title: "Jakub. J. Guzek"
+        left:
+                - text: "Home"
+                  href: index.html
+                - text: "Documents"
+                  menu:
+                          - text: "Biotechnology Course"
+                            href: biotech_docs.html
+                          - text: "Miscellaneous Projects"
+                            href: misc.html
+                          - text: "*Curriculum vitae*"
+                            href: cv.html
+                - text: GitHub
+                  icon: fa-github
+                  href: https://github.com/jakubguzek
