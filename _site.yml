@@ -1,7 +1,6 @@
 name: "jakubguzek.eu"
 output_dir: "."
 navbar:
-        type: inverse
         left:
                 - text: "Jakub J. Guzek"
                   href: index.html
