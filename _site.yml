@@ -10,7 +10,7 @@ navbar:
                 - text: "Miscellaneous Projects"
                   href: misc.html
                 - text: "Curriculum vitae"
-                  ihref: cv.html
+                  href: cv.html
         right:
                 - text: GitHub
                   icon: fa-github
