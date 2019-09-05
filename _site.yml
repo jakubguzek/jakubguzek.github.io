@@ -1,5 +1,6 @@
 name: "jakubguzek.eu"
 output_dir: "."
+theme: inverse
 navbar:
         type: inverse
         left:
