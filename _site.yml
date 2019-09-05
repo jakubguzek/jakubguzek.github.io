@@ -1,6 +1,5 @@
 name: "jakubguzek.eu"
 output_dir: "."
-theme: inverse
 navbar:
         type: inverse
         left:
@@ -16,3 +15,6 @@ navbar:
                 - text: GitHub
                   icon: fa-github
                   href: https://github.com/jakubguzek
+output:
+        html_document:
+                theme: darkly
