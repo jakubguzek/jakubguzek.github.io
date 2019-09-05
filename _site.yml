@@ -5,12 +5,11 @@ navbar:
         left:
                 - text: "Jakub J. Guzek"
                   href: index.html
-                - text: "Documents"
                 - text: "Biotechnology Course"
                   href: biotech_docs.html
                 - text: "Miscellaneous Projects"
                   href: misc.html
-                - text: "*Curriculum vitae*"
+                - text: "Curriculum vitae"
                   ihref: cv.html
         right:
                 - text: GitHub
