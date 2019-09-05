@@ -5,7 +5,7 @@ navbar:
         left:
                 - text: "Jakub J. Guzek"
                   href: index.html
-                - text: "Biotechnology Course"
+                - text: "Biotechnology Course Notes"
                   href: biotech_docs.html
                 - text: "Miscellaneous Projects"
                   href: misc.html
