@@ -16,4 +16,5 @@ navbar:
                   icon: fa-github
                   href: https://github.com/jakubguzek
 output:
-        html_document
+        html_document:
+                theme: paper
