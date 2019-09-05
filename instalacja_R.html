@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Jakub J. Guzek (jakub.j.guzek@gmail.com)" />
+
+
+<title>Instalacja środowiska R – wersja rozszerzona.</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Jakub J. Guzek</a>
+</li>
+<li>
+  <a href="biotech_docs.html">Biotechnology Course Notes</a>
+</li>
+<li>
+  <a href="misc.html">Miscellaneous Projects</a>
+</li>
+<li>
+  <a href="cv.html">Curriculum vitae</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jakubguzek">
+    <span class="fa fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Instalacja środowiska R – wersja rozszerzona.</h1>
+<h4 class="author">Jakub J. Guzek (<a href="mailto:jakub.j.guzek@gmail.com" class="email">jakub.j.guzek@gmail.com</a>)</h4>
+
+</div>
+
+
+
+
+<div id="wstep" class="section level1">
+<h1>Wstęp</h1>
+<p>Poradnik ten przeznaczony jest dla osób, które wcześniej nie miały styczności z językiem <span class="math inline">\(\mathsf{R}\)</span>. Nie jest on przeznaczony dla osób, które mają doświadczenie z tym językiem, ani dla osób, które mają doświadczenie z analogicznymi środowiskami. Na wstępnie również musi zostać zaznaczone, że autor tego poradnika nie jest specjalistą, ani nawet doświadczonym użytkownikiem <span class="math inline">\(\mathsf{R}\)</span>, a tekst ten dotyczy tylko instalacji środowiska, a nie jest wprowadzeniem do niego.</p>
+<p>Dobrym źródłem informacji na temat <span class="math inline">\(\mathsf{R}\)</span> jest <a href="https://www.r-project.org/">r-project</a>, <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a>, a dla użytkowników systemów UNIX-based (Linux, OSX) tak zwane <em>manual pages</em> dotyczące <span class="math inline">\(\mathsf{R}\)</span>, do których dostęp można uzyskać wpisując</p>
+<pre><code>man R</code></pre>
+<p>w terminalu<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, a także <code>?[nazwa funkcji]</code> w samym <span class="math inline">\(\mathsf{R}\)</span></p>
+</div>
+<div id="instalacja-dla-systemu-windows" class="section level1">
+<h1>Instalacja dla systemu Windows</h1>
+<div id="pobranie-i-instalacja" class="section level2">
+<h2>Pobranie i instalacja</h2>
+<p>Ten krok jest dosyć prosty – należy wejść na stronę R Project (do której link zamieszczony został we wstępie do tego poradnika), następnie wybrać <strong>CRAN</strong> z menu, które powinno znajdować się po lewej stronie. Użytkownik zostanie wówczas przekierowany do wyboru serwera. Dla użytkowników pobierających z polski polecany jest jeden z serwerów niemieckich<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> lub 0-Cloud. Kolejnym krokiem jest pobranie instalatora dla Windowsa (wybrać opcję <span class="math inline">\(\mathtt{base}\)</span>). Następnie należy przeprowadzić standardową instalację.</p>
+</div>
+<div id="konfiguracja" class="section level2">
+<h2>Konfiguracja</h2>
+<p>Po uruchomieniu <span class="math inline">\(\mathsf{R}\)</span> należy w okienku wpisać następujące komendy, aby zainstalować R Commander.</p>
+<pre><code>install.packages{&quot;Rcmdr&quot;, dependancies = TRUE}
+install.packages{&quot;nFactors&quot;, dependancies = TRUE}
+install.packages{&quot;clusterSim&quot;, dependancies = TRUE}
+isntall.packages{&quot;mvShapiroTest&quot;, dependacnies = TRUE}
+install.packages{&quot;agricolae&quot;, dependancies = TRUE}</code></pre>
+</div>
+</div>
+<div id="instalacja-dla-systemu-osx-macos" class="section level1">
+<h1>Instalacja dla systemu OSX (macOS)</h1>
+<p>Instalacja dla systemu OSX jest analogiczna jak dla sytemu Windows, należy przy pobieraniu rzecz jasna wybrać opcję dla macOS i pobrać binary dla użytkowników (a nie znajdującą się poniżej opcję dla developera). Następnie przeprowadzić standardową instalację</p>
+<p>Alternatywą jest użycie <em>package managera</em> dla systemu macOS – <a href="https://brew.sh/">homebrew</a> Wówczas, należy wpisać </p>
+<pre><code>brew install r</code></pre>
+<p>w terminal.</p>
+<div id="konfiguracja-1" class="section level2">
+<h2>Konfiguracja</h2>
+<p>Najszybszą opcją jest uruchomienie <span class="math inline">\(\mathsf{R}\)</span> w terminalu wpisując <code>R</code> i wpisanie poniższych komend.</p>
+<pre><code>install.packages{&quot;Rcmdr&quot;, dependancies = TRUE}
+install.packages{&quot;nFactors&quot;, dependancies = TRUE}
+install.packages{&quot;clusterSim&quot;, dependancies = TRUE}
+isntall.packages{&quot;mvShapiroTest&quot;, dependacnies = TRUE}
+install.packages{&quot;agricolae&quot;, dependancies = TRUE}</code></pre>
+<p>Powyższe komendy mogą zwracać błąd dotyczący paczki <code>tcl-tk</code>, wówczas należy użyć homebrew i wpisać w terminal <code>brew install tcl-tk</code></p>
+</div>
+</div>
+<div id="instalacja-dla-systemow-linux" class="section level1">
+<h1>Instalacja dla systemów Linux</h1>
+<div id="instalacja-dla-dystrybucji-debian-based" class="section level2">
+<h2>Instalacja dla dystrybucji Debian-based</h2>
+<pre><code>sudo apt-get r-base</code></pre>
+</div>
+<div id="instalacja-dla-dystrybucji-fedora" class="section level2">
+<h2>Instalacja dla dystrybucji Fedora</h2>
+<pre><code>yum install -y R</code></pre>
+</div>
+<div id="instalacja-dla-rhel" class="section level2">
+<h2>Instalacja dla RHEL</h2>
+<pre><code>sudo yum groupinstall -y ‘Development Tools’
+sudo yum install -y libcurl-devel openssl-devel libxml2-devel
+sudo yum install -y R</code></pre>
+</div>
+<div id="instalacja-dla-dystrybucji-arch-based" class="section level2">
+<h2>Instalacja dla dystrybucji Arch-based</h2>
+<pre><code>sudo pacman -S r</code></pre>
+</div>
+<div id="konfiguracja-2" class="section level2">
+<h2>Konfiguracja</h2>
+<p>Należy uruchomić terminal i wpisać <span class="math inline">\(\mathsf{R}\)</span>, a w samym <span class="math inline">\(\mathsf{R}\)</span>:</p>
+<pre><code>install.packages{&quot;Rcmdr&quot;, dependancies = TRUE}
+install.packages{&quot;nFactors&quot;, dependancies = TRUE}
+install.packages{&quot;clusterSim&quot;, dependancies = TRUE}
+isntall.packages{&quot;mvShapiroTest&quot;, dependacnies = TRUE}
+install.packages{&quot;agricolae&quot;, dependancies = TRUE}</code></pre>
+</div>
+</div>
+<div id="troubleshooting" class="section level1">
+<h1>Troubleshooting</h1>
+<p>Jednym z najczęstszych problemów przy instalowaniu paczek w <span class="math inline">\(\mathsf{R}\)</span> na systemach UNIX-like (OSX, Linux) jest błąd dotyczący braku <code>tcl-tk</code> lub błąd dotyczący braku kompilatora dla języka FORTRAN.</p>
+<div id="brak-tcl-tk" class="section level2">
+<h2>Brak <code>tcl-tk</code></h2>
+<p>Na OSX problem ten najłatwiej rozwiązać instalując formułę <code>tcl-tk</code> przez homebrew, co można uczynić wpisując</p>
+<pre><code>brew install tcl-tk</code></pre>
+<p>w terminal.</p>
+<p>Analogicznie na systemach linux należy pobrać paczkę <code>tcl-tk</code> przy użyciu package managera danego systemu.</p>
+</div>
+<div id="brak-kompilatora-dla-jezyka-fortran" class="section level2">
+<h2>Brak kompilatora dla języka FORTRAN</h2>
+<p>Na OSX problem ten również najłatwiej jest rozwiązać przy użyciu homebrew Jeżeli kompilator nie jest zainstalowany</p>
+<pre><code>brew install gfortran</code></pre>
+<p>Jeżeli kompilator jest zainstalowany, a mimo to występuje ten błąd</p>
+<pre><code>brew upgrade gfortran</code></pre>
+<p>Na systemach linux problem ten można rozwiązać instalując front-end’owy kompilator dla fortran’u od GNU – gcc-fortran</p>
+<p>Przykład dla systemów Arch-based</p>
+<pre><code>sudo pacman -S gcc-fortran</code></pre>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Terminal.app na OSX<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>serwer University of Münster może sprawiać problemy toteż jest odradzany<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
