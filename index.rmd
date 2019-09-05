@@ -1,6 +1,5 @@
 ---
 title: Jakub J. Guzek
-contact: jakub.j.guzek@gmail.com
 ---
 
 # Hello World
