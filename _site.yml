@@ -1,8 +1,0 @@
-name: Jakub J. Guzek
-navbar:
-        title: Jakub. J. Guzek
-        left:
-                - text: "Home"
-                  href: index.html
-                - text: "Documents"
-                  href: 1-docs.html
