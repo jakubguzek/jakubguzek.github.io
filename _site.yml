@@ -19,4 +19,6 @@ output:
         html_document:
                 theme: paper
                 css: font-awesome-5.1.0/css/all.css
+                include:
+                        after_body: footer.html
                 self_contained: no
