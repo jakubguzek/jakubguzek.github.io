@@ -17,3 +17,5 @@ navbar:
 output:
         html_document:
                 theme: paper
+                css: font-awesome-5.1.0/css/all.css
+                self_contained: no
