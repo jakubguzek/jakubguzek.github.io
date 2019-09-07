@@ -11,6 +11,9 @@ navbar:
                 - text: "Curriculum vitae"
                   href: cv.html
         right:
+                - text: LinkedIn
+                  icon: fa-linkedin
+                  href: https://www.linkedin.com/in/jakub-guzek-4270a0193/
                 - text: GitHub
                   icon: fa-github
                   href: https://github.com/jakubguzek
