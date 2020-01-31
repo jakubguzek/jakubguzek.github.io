@@ -291,13 +291,13 @@ $(document).ready(function () {
         <li>
   <a href="https://www.linkedin.com/in/jakub-guzek-4270a0193/">
     <span class="fa fa-linkedin"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://github.com/jakubguzek">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -321,6 +321,67 @@ $(document).ready(function () {
 <div id="my-newbie-dwm-fork" class="section level2">
 <h2>My newbie dwm fork</h2>
 <p>Recently I started using <a href="https://dwm.suckless.org/">dwm</a> which is one of <a href="https://en.wikipedia.org/wiki/Suckless.org">suckless programs</a>, Like all of suckless software it is configured by directly editing its source code, so any personal config is kind of unique fork. You can find my dwm config on my GitHub in dedicated <a href="https://github.com/jakubguzek/dwm">repository</a>.</p>
+</div>
+<div id="script" class="section level2">
+	<h2>Script</h2>
+	<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.8.6/brython.min.js">
+</script>
+<body onload="brython()">
+
+            <script type="text/python">
+		import random
+		import sys
+		import os
+
+		baza = open("odp_baza","r")
+		d = {}
+
+		with open("odp_baza","r",encoding="utf-8-sig") as f:
+		    for line in f:
+			(key, val) = line.split("\t")
+			d[str(key)] = str(val).rstrip()
+
+		def greeter():
+		    print("Quiz z pytaniami na egzamin z fizjologii roślin\n")
+		    print("Odpowiedzi udzielaj w postaci pojedynczych liter oddzielonych spacjami w wypadku kilki poprawnych")
+		    print("np. \"a\" w wypadku gdy poprawna jest odpowiedź a lub \"a c\" w wypadku gdy poprawne są odpowiedzi a i c\n")
+		    print("Czy jesteś gotowy/a? (y/n)")
+		    user_ans = input(">")
+		    if user_ans == "y" or user_ans == "Y":
+			    os.system('cls' if os.name == 'nt' else 'clear')
+			    print("Możesz przerwać w każdej chwili wpisując \"exit\"\n\n")
+		    elif user_ans == "n" or user_ans == "N":
+			exit(0)
+		    else:
+			exit(1)
+
+		def question():
+		    score = 0
+		    while True:
+			quest = random.choice(list(d.keys()))
+			ans = d[quest]
+			print(quest)
+			user_ans = input(">")
+			if user_ans == "exit":
+			    print("Twój wynik to:", score)
+			    exit(0)
+			elif user_ans == ans:
+			    os.system('cls' if os.name == 'nt' else 'clear')
+			    score = score + 1
+			    print("\tDobra odpowiedź\tAktualny wynik:" ,score, "\n")
+			else:
+			    os.system('cls' if os.name == 'nt' else 'clear')
+			    score = score - 1
+			    print("\tZła odpowiedź.\tAktualny wynik:", score, " Poprawne są odpowiedzi:", ans, "\n")
+
+		def main():
+		    greeter()
+		    question()
+
+		main()
+            </script>
+        </body>
 </div>
 
 <link rel="stylesheet" href="site_libs/font-awesome-5.1.0/css/all.css">
